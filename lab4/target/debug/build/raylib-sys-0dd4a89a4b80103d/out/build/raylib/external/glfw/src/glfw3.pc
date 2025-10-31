@@ -1,0 +1,13 @@
+prefix=/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out
+exec_prefix=${prefix}
+includedir=/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/include
+libdir=/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/lib
+
+Name: GLFW
+Description: A multi-platform library for OpenGL, window and input
+Version: 3.4.0
+URL: https://www.glfw.org/
+Requires.private: 
+Libs: -L${libdir} -lglfw3
+Libs.private:  -lrt -lm -ldl
+Cflags: -I${includedir}

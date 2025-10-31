@@ -1,0 +1,7 @@
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/lib/libraylib.a
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/include/raylib.h
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/include/rlgl.h
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/include/raymath.h
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/lib/pkgconfig/raylib.pc
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/lib/cmake/raylib/raylib-config-version.cmake
+/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/lib/cmake/raylib/raylib-config.cmake
