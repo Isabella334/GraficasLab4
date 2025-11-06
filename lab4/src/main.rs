@@ -8,7 +8,6 @@ mod obj_loader;
 use raylib::prelude::*;
 use glam::Vec3;
 use obj_loader::load_obj;
-use vertex::project_to_screen;
 use transform::rotate_y;
 
 struct Planet {
@@ -35,8 +34,8 @@ fn main() {
         Planet { theta: 4.0, radius: 0.4, orbit_radius: 2.0, shader: 3, spin: 0.0, spin_speed: 1.5, name: "Mocca".to_string() },
     ];
 
-    let cam_distance = 2.0;  // distancia de la "cámara" para perspectiva
-    let zoom = 200.0;        // factor de escala para pantalla
+    let cam_distance = 2.0;
+    let zoom = 200.0;
     let screen_center_x = 400.0;
     let screen_center_y = 300.0;
     let orbit_speed = 0.02;
@@ -55,22 +54,19 @@ fn main() {
         d.clear_background(Color::BLACK);
 
         for planet in planets.iter_mut() {
-            // posición en órbita
             let x = planet.orbit_radius * planet.theta.cos();
             let z = planet.orbit_radius * planet.theta.sin();
             let pos = Vec3::new(x, 0.0, z);
 
-            // rotación propia
             planet.spin += planet.spin_speed * 0.05;
 
-            // perspectiva: planetas más lejos se ven más pequeños
             let perspective = 1.0 / (cam_distance - z + 1.0);
             let planet_scale = planet.radius * perspective;
 
-            // rotar y escalar vértices del mesh
             let transformed: Vec<Vec3> = mesh.vertices.iter()
-                .map(|v| rotate_y(*v, planet.spin) * planet_scale + pos)
+                .map(|v| rotate_y(v.position, planet.spin) * planet_scale + pos)
                 .collect();
+
 
             for v in transformed.iter() {
                 let normal = (*v - pos).normalize();
@@ -81,19 +77,25 @@ fn main() {
                     _ => Vec3::ONE,
                 };
 
-                // proyección a pantalla
+                // proyectar y dibujar punto
                 let screen_x = screen_center_x + v.x * perspective * zoom;
-                let screen_y = screen_center_y + v.y * perspective * zoom;
-                d.draw_pixel(screen_x as i32, screen_y as i32, Color::new(
-                    (color.x*255.0) as u8,
-                    (color.y*255.0) as u8,
-                    (color.z*255.0) as u8,
-                    255
-                ));
+                let screen_y = screen_center_y - v.y * perspective * zoom;
+                d.draw_pixel(
+                    screen_x as i32,
+                    screen_y as i32,
+                    Color::new(
+                        (color.x * 255.0) as u8,
+                        (color.y * 255.0) as u8,
+                        (color.z * 255.0) as u8,
+                        255,
+                    ),
+                );
             }
+
+            // texto con el nombre del planeta
             let label_x = screen_center_x + x * perspective * zoom;
-            let label_y = screen_center_y - 30.0; // 30 pixeles arriba del planeta
-            d.draw_text(&planet.name, label_x as i32, label_y as i32, 20, Color::WHITE);
+            let label_y = screen_center_y - (planet.radius * perspective * zoom) - 30.0;
+            d.draw_text(&planet.name, label_x as i32 - 20, label_y as i32, 20, Color::WHITE);
         }
 
         time += 0.05;
