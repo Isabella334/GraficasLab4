@@ -31,7 +31,6 @@ fn main() {
     let triangles = mesh.triangles();
 
     // Sol en el centro
-    let sun_pos = Vec3::new(0.0, 0.0, 0.0);
 
     // Planetas
     let mut planets = vec![
@@ -91,19 +90,6 @@ fn main() {
         let planet_layers: Vec<u8> = vec![0, 1, 2];
         let planet_radii: Vec<f32> = planets.iter().map(|p| p.radius * 2.0).collect();
         d.clear_background(Color::BLACK);
-
-        // 🌞 Sol en el centro (efecto simple)
-        let sun_screen_x = screen_center_x;
-        let sun_screen_y = screen_center_y;
-        for r in (10..80).step_by(5) {
-            let intensity = (255 - (r * 3)).max(0);
-            d.draw_circle(
-                sun_screen_x as i32,
-                sun_screen_y as i32,
-                r as f32,
-                Color::new(255, (220 - (r as u8 * 2)) as u8, 50, intensity as u8),
-            );
-        }
 
         // 🪐 Dibujar planetas
         for planet in planets.iter_mut() {
