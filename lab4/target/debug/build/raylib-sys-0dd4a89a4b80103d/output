@@ -28,10 +28,10 @@ running: cd "/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/deb
 -- Compiling with the flags:
 --   PLATFORM=PLATFORM_DESKTOP
 --   GRAPHICS=GRAPHICS_API_OPENGL_33
--- Configuring done (3.4s)
--- Generating done (0.6s)
+-- Configuring done (3.6s)
+-- Generating done (1.0s)
 -- Build files have been written to: /mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/build
-running: cd "/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/build" && LC_ALL="C" MAKEFLAGS="-j --jobserver-fds=9,10 --jobserver-auth=9,10" "cmake" "--build" "/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/build" "--target" "install" "--config" "Debug"
+running: cd "/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/build" && LC_ALL="C" MAKEFLAGS="-j --jobserver-fds=8,9 --jobserver-auth=8,9" "cmake" "--build" "/mnt/c/Users/isabe/OneDrive/Escritorio/GraficasLab4/lab4/target/debug/build/raylib-sys-0dd4a89a4b80103d/out/build" "--target" "install" "--config" "Debug"
 [ 74%] Built target glfw
 [100%] Built target raylib
 Install the project...

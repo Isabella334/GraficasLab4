@@ -14,6 +14,22 @@ pub struct Mesh {
     pub faces: Vec<[usize; 3]>, // triángulos: índices de vértices
 }
 
+impl Mesh {
+    pub fn triangles(&self) -> Vec<[Vec3; 3]> {
+        self.faces
+            .iter()
+            .map(|face| {
+                [
+                    self.vertices[face[0]].position,
+                    self.vertices[face[1]].position,
+                    self.vertices[face[2]].position,
+                ]
+            })
+            .collect()
+    }
+}
+
+
 // --- Función para cargar archivos .obj ---
 pub fn load_obj(path: &str) -> Mesh {
     let file = File::open(path).expect("No se pudo abrir el archivo OBJ");

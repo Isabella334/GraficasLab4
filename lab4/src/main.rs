@@ -3,14 +3,12 @@ mod transform;
 mod shader_mars;
 mod shader_neptune;
 mod shader_mocca;
-mod shader_background;
 mod obj_loader;
 
 use raylib::prelude::*;
 use glam::Vec3;
 use obj_loader::load_obj;
 use transform::rotate_y;
-use shader_background::background_color;
 
 struct Planet {
     theta: f32,
@@ -30,6 +28,7 @@ fn main() {
         .build();
 
     let mesh = load_obj("assets/models/sphere.obj");
+    let triangles = mesh.triangles();
 
     // Sol en el centro
     let sun_pos = Vec3::new(0.0, 0.0, 0.0);
@@ -58,7 +57,6 @@ fn main() {
     let planet_layers: Vec<u8> = vec![1, 2, 3];
 
     while !rl.window_should_close() {
-        // 🎮 Controles de cámara
         if rl.is_key_down(KeyboardKey::KEY_RIGHT) { cam_yaw += 0.03; }
         if rl.is_key_down(KeyboardKey::KEY_LEFT)  { cam_yaw -= 0.03; }
         if rl.is_key_down(KeyboardKey::KEY_UP)    { cam_pitch = (cam_pitch + 0.02).clamp(-0.6, 0.6); }
@@ -92,32 +90,7 @@ fn main() {
 
         let planet_layers: Vec<u8> = vec![0, 1, 2];
         let planet_radii: Vec<f32> = planets.iter().map(|p| p.radius * 2.0).collect();
-
-        // 🖤 Fondo base negro
         d.clear_background(Color::BLACK);
-
-        // 💫 Capa de fondo calculada (se sobrepone al negro)
-        let bg_color = background_color(
-            Vec3::new(0.0, 0.0, 0.0),
-            time,
-            &planet_positions,
-            &planet_layers,
-            &planet_radii,
-        );
-
-        // Dibujamos una capa semitransparente encima del fondo
-        d.draw_rectangle(
-            0,
-            0,
-            800,
-            600,
-            Color::new(
-                (bg_color.x * 255.0) as u8,
-                (bg_color.y * 255.0) as u8,
-                (bg_color.z * 255.0) as u8,
-                80, // ← opacidad baja (ajústala entre 50 y 150 según el efecto)
-            ),
-        );
 
         // 🌞 Sol en el centro (efecto simple)
         let sun_screen_x = screen_center_x;
@@ -141,36 +114,38 @@ fn main() {
             let perspective = 1.0 / (cam_distance - z + 1.0);
             let planet_scale = planet.radius * perspective;
 
-            for v in mesh.vertices.iter() {
-                let world_v = rotate_y(v.position, planet.spin) * planet_scale + pos;
-                let normal = (world_v - pos).normalize();
+            for tri in mesh.triangles() {
+                let mut tri_world = [
+                    rotate_y(tri[0], planet.spin) * planet_scale + pos,
+                    rotate_y(tri[1], planet.spin) * planet_scale + pos,
+                    rotate_y(tri[2], planet.spin) * planet_scale + pos,
+                ];
 
-                // 💫 Shader por planeta
+                // Proyección
+                let mut screen_coords = tri_world.map(|v| {
+                    let perspective = 1.0 / (cam_distance - v.z + 1.0);
+                    (
+                        (screen_center_x + v.x * perspective * zoom) as i32,
+                        (screen_center_y - v.y * perspective * zoom) as i32,
+                    )
+                });
+
+                // Color por planeta
                 let color = match planet.shader {
-                    1 => shader_mars::shader_mars(normal, time),
-                    2 => shader_neptune::shader_neptune(normal, time),
-                    3 => shader_mocca::shader_mocca(normal, time),
+                    1 => shader_mars::shader_mars(tri_world[0].normalize(), time),
+                    2 => shader_neptune::shader_neptune(tri_world[0].normalize(), time),
+                    3 => shader_mocca::shader_mocca(tri_world[0].normalize(), time),
                     _ => Vec3::new(1.0, 1.0, 1.0),
                 };
 
-                let screen_x = screen_center_x + world_v.x * perspective * zoom;
-                let screen_y = screen_center_y - world_v.y * perspective * zoom;
+                // Dibujar triángulo relleno
+                d.draw_triangle(
+                    rvec2(screen_coords[0].0, screen_coords[0].1),
+                    rvec2(screen_coords[1].0, screen_coords[1].1),
+                    rvec2(screen_coords[2].0, screen_coords[2].1),
+                    Color::new(255, 255, 255, 255),
+                );
 
-                let dx = screen_x - (screen_center_x + x * perspective * zoom);
-                let dy = screen_y - (screen_center_y - 0.0 * perspective * zoom);
-
-                if (dx * dx + dy * dy).sqrt() < planet.radius * 200.0 {
-                    d.draw_pixel(
-                        screen_x as i32,
-                        screen_y as i32,
-                        Color::new(
-                            (color.x * 255.0) as u8,
-                            (color.y * 255.0) as u8,
-                            (color.z * 255.0) as u8,
-                            255,
-                        ),
-                    );
-                }
             }
 
             // 🏷️ Etiqueta
