@@ -3,9 +3,9 @@
 Implementación de un sistema solar estilizado en Rust, con shaders procedurales para cada planeta.  
 Incluye **Marte**, **Mocca** (inventado), **Saturno** (con anillos), y el **Sol**.
 
-![Sistema Solar](docs/SistemaSolar1.png)
+![Sistema Solar](docs/SistemaSolar1.png = 250x250)
 
-![Sistema Solar](docs/SistemaSolar3.png)  
+![Sistema Solar](docs/SistemaSolar3.png = 250x250)  
 
 ---
 
