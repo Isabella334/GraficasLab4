@@ -58,10 +58,52 @@ Datos por vértice:
 pub struct Vertex {
     pub position: Vector3,       // Posición original (local)
     pub normal: Vector3,         // Normal original
-    pub tex_coords: Vector2,     // Coordenadas de textura (no usadas, reemplazadas por UVs esféricas)
-    pub color: Vector3,          // .x=iluminación bruta, .y=u, .z=v (UVs fijas)
+    pub tex_coords: Vector2,     // Coordenadas de textura
+    pub color: Vector3,
     pub transformed_position: Vector3, // Posición post-transformación
     pub transformed_normal: Vector3,   // Normal post-transformación
     pub world_position: Vector3,       // Posición en mundo
 }
 ```
+
+### Funciones principales
+
+#### Pipeline de renderizado (src/main.rs)
+
+```rust
+fn render(
+    framebuffer: &mut Framebuffer,
+    uniforms: &Uniforms,
+    vertex_array: &[Vertex],
+    light: &Light,
+    shader_type: ShaderType,
+)
+```
+- Entrada: vértices, uniforms, tipo de shader.
+- Proceso:
+    - vertex_shader → transforma vértices.
+    - triangle → rasteriza triángulos → genera fragmentos.
+    - fragment_shaders → colorea cada fragmento.
+- Salida: píxeles dibujados en el framebuffer.
+
+#### Vertex Shader (src/shaders.rs)
+
+```rust
+pub fn vertex_shader(vertex: &Vertex, uniforms: &Uniforms) -> Vertex
+```
+- Calcula world_position, transformed_position, transformed_normal.
+- Genera UVs esféricas fijas y las guarda en color.y (u) y color.z (v).
+- Para anillos (is_ring: true), aplanar geometría en Y=0.
+
+#### Fragment Shaders (src/shaders.rs)
+
+```rust
+pub fn fragment_shaders(
+    fragment: &Fragment,
+    uniforms: &Uniforms,
+    shader_type: ShaderType,
+) -> Vector3
+```
+- Dispatch según shader_type.
+- Cada shader usa fragment.color.y/z para UVs fijas → texturas estáticas.
+- Aplica iluminación difusa: base_color * fragment.color.x.
