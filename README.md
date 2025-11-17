@@ -11,11 +11,12 @@ Incluye **Marte**, **Mocca** (inventado), **Saturno** (con anillos), y el **Sol*
 
 ## 🛠️ Compilación y ejecución
 
-Requisitos:
-- Rust 1.70+
-- [raylib](https://www.raylib.com/) (incluido como dependencia)
-
 ```bash
 git clone https://github.com/tu-usuario/sistema-solar.git
 cd GraficasLab4
 cargo run
+
+---
+
+## 🎮 Controles
+Flechas ← → ↑ ↓: rotar cámara alrededor del sistema.
