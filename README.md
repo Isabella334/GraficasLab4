@@ -20,3 +20,20 @@ cargo run
 
 ## 🎮 Controles
 Flechas ← → ↑ ↓: rotar cámara alrededor del sistema.
+
+---
+
+## 📚 Documentación técnica
+
+# Estructuras clave
+Uniforms (src/main.rs)
+
+```rust
+pub struct Uniforms {
+    pub model_matrix: Matrix,    // Transformación: mundo local → mundo
+    pub view_matrix: Matrix,     // Cámara: mundo → vista
+    pub projection_matrix: Matrix, // Proyección: vista → clip
+    pub viewport_matrix: Matrix, // Viewport: clip → pantalla
+    pub is_ring: bool,           // Activa geometría plana para anillos
+}
+```
