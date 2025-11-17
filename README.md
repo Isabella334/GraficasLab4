@@ -26,7 +26,7 @@ Flechas ← → ↑ ↓: rotar cámara alrededor del sistema.
 ## 📚 Documentación técnica
 
 ### Estructuras clave
-###### Uniforms (src/main.rs)
+#### Uniforms (src/main.rs)
 Define los parámetros globales pasados al pipeline de renderizado:
 
 ```rust
@@ -39,7 +39,7 @@ pub struct Uniforms {
 }
 ```
 
-###### Fragment (src/fragment.rs)
+#### Fragment (src/fragment.rs)
 Datos interpolados por fragmento (píxel):
 
 ```rust
@@ -51,7 +51,7 @@ pub struct Fragment {
 }
 ```
 
-###### Vertex (src/vertex.rs)
+#### Vertex (src/vertex.rs)
 Datos por vértice:
 
 ```rust
