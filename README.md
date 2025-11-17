@@ -15,7 +15,7 @@ Incluye **Marte**, **Mocca** (inventado), **Saturno** (con anillos), y el **Sol*
 git clone https://github.com/tu-usuario/sistema-solar.git
 cd GraficasLab4
 cargo run
-
+```
 ---
 
 ## 🎮 Controles
