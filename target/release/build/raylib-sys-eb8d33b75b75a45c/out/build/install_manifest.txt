@@ -1,7 +1,0 @@
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/lib/libraylib.a
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/include/raylib.h
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/include/rlgl.h
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/include/raymath.h
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/lib/pkgconfig/raylib.pc
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/lib/cmake/raylib/raylib-config-version.cmake
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/build/raylib-sys-eb8d33b75b75a45c/out/lib/cmake/raylib/raylib-config.cmake

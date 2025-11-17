@@ -1,9 +1,0 @@
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/deps/find_msvc_tools-f338e96b4a44988f.d: /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/lib.rs /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/find_tools.rs /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/tool.rs
-
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/deps/libfind_msvc_tools-f338e96b4a44988f.rlib: /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/lib.rs /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/find_tools.rs /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/tool.rs
-
-/mnt/c/Users/isabe/OneDrive/Escritorio/FINAL_GRAFICAS/Graficas_ENTREGAS/GraficasLab4/lab4/target/release/deps/libfind_msvc_tools-f338e96b4a44988f.rmeta: /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/lib.rs /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/find_tools.rs /home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/tool.rs
-
-/home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/lib.rs:
-/home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/find_tools.rs:
-/home/isabellarecinos334/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.4/src/tool.rs:
